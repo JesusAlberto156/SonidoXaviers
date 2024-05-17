@@ -1,8 +1,10 @@
 
+import java.awt.Color;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.util.Random;
 import javax.sound.sampled.AudioInputStream;
 import javax.sound.sampled.AudioSystem;
 import javax.sound.sampled.Clip;
@@ -26,7 +28,12 @@ public class Principal extends javax.swing.JFrame {
     private Clip clip;
     private FloatControl volumeControl;
     FondoPanel1 fondo1 = new FondoPanel1();
-    private int cancion;
+    Random random = new Random();
+    private int cancion = random.nextInt((6 - 1) + 1) + 1;
+    Color Boton = new Color(144,242,232);
+    
+    //Interfaz
+    Parametros p = new Parametros();
     
     /**
      * Creates new form Principal
@@ -37,8 +44,9 @@ public class Principal extends javax.swing.JFrame {
         this.setTitle("Luz y sonido xaviers - Menú principal");
         this.setLocationRelativeTo(null);
         try {
+            
             // Ruta del archivo de audio
-            File audioFile = new File("src\\MUSICA\\1.wav");
+            File audioFile = new File("src\\MUSICA\\"+cancion+".wav");
 
             // Cargar el archivo de audio
             AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
@@ -58,7 +66,17 @@ public class Principal extends javax.swing.JFrame {
         }
         PanelMusica2.setVisible(false);
         PanelVolumen2.setVisible(false);
-        cancion = 1;
+        Mas1.setBackground(Color.CYAN);
+        Mas2.setBackground(Color.CYAN);
+        Menos1.setBackground(Color.CYAN);
+        Menos2.setBackground(Color.CYAN);
+        AtrasMusica1.setBackground(Color.CYAN);
+        AtrasMusica2.setBackground(Color.CYAN);
+        AdelanteMusica1.setBackground(Color.CYAN);
+        AdelanteMusica2.setBackground(Color.CYAN);
+        DetenerMusica.setBackground(Color.CYAN);
+        IniciarMusica.setBackground(Color.CYAN);
+        
     }
     
     public void changeVolumeMas(float change) {
@@ -110,8 +128,14 @@ public class Principal extends javax.swing.JFrame {
         jPanel2 = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jPanel1 = new FondoPanel1();
+        Boda = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        XV = new javax.swing.JButton();
+        Otro = new javax.swing.JButton();
+        Cumpleaños = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setResizable(false);
 
         PanelPrincipal.setBackground(new java.awt.Color(0, 0, 0));
         PanelPrincipal.setForeground(new java.awt.Color(242, 242, 242));
@@ -125,9 +149,17 @@ public class Principal extends javax.swing.JFrame {
         PanelMusica1.setOpaque(false);
 
         DetenerMusica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Musica1.png"))); // NOI18N
+        DetenerMusica.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        DetenerMusica.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         DetenerMusica.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 DetenerMusicaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                DetenerMusicaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                DetenerMusicaMouseExited(evt);
             }
         });
         DetenerMusica.addActionListener(new java.awt.event.ActionListener() {
@@ -137,9 +169,17 @@ public class Principal extends javax.swing.JFrame {
         });
 
         AtrasMusica1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Musica4.png"))); // NOI18N
+        AtrasMusica1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        AtrasMusica1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AtrasMusica1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AtrasMusica1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AtrasMusica1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AtrasMusica1MouseExited(evt);
             }
         });
         AtrasMusica1.addActionListener(new java.awt.event.ActionListener() {
@@ -149,9 +189,17 @@ public class Principal extends javax.swing.JFrame {
         });
 
         AdelanteMusica1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Musica3.png"))); // NOI18N
+        AdelanteMusica1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        AdelanteMusica1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AdelanteMusica1.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AdelanteMusica1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AdelanteMusica1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AdelanteMusica1MouseExited(evt);
             }
         });
         AdelanteMusica1.addActionListener(new java.awt.event.ActionListener() {
@@ -187,10 +235,17 @@ public class Principal extends javax.swing.JFrame {
         PanelMusica2.setOpaque(false);
 
         IniciarMusica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Musica2.png"))); // NOI18N
-        IniciarMusica.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        IniciarMusica.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        IniciarMusica.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         IniciarMusica.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 IniciarMusicaMouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                IniciarMusicaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                IniciarMusicaMouseExited(evt);
             }
         });
         IniciarMusica.addActionListener(new java.awt.event.ActionListener() {
@@ -200,10 +255,17 @@ public class Principal extends javax.swing.JFrame {
         });
 
         AtrasMusica2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Musica4.png"))); // NOI18N
-        AtrasMusica2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AtrasMusica2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        AtrasMusica2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AtrasMusica2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AtrasMusica2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AtrasMusica2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AtrasMusica2MouseExited(evt);
             }
         });
         AtrasMusica2.addActionListener(new java.awt.event.ActionListener() {
@@ -213,10 +275,17 @@ public class Principal extends javax.swing.JFrame {
         });
 
         AdelanteMusica2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Musica3.png"))); // NOI18N
-        AdelanteMusica2.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        AdelanteMusica2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        AdelanteMusica2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         AdelanteMusica2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 AdelanteMusica2MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                AdelanteMusica2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                AdelanteMusica2MouseExited(evt);
             }
         });
         AdelanteMusica2.addActionListener(new java.awt.event.ActionListener() {
@@ -251,7 +320,20 @@ public class Principal extends javax.swing.JFrame {
 
         PanelVolumen1.setOpaque(false);
 
+        Mas1.setForeground(new java.awt.Color(255, 255, 255));
         Mas1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Volumen1.png"))); // NOI18N
+        Mas1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Mas1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Mas1.setMaximumSize(new java.awt.Dimension(20, 20));
+        Mas1.setMinimumSize(new java.awt.Dimension(20, 20));
+        Mas1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Mas1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Mas1MouseExited(evt);
+            }
+        });
         Mas1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Mas1ActionPerformed(evt);
@@ -259,6 +341,16 @@ public class Principal extends javax.swing.JFrame {
         });
 
         Menos1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Volumen2.png"))); // NOI18N
+        Menos1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Menos1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Menos1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Menos1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Menos1MouseExited(evt);
+            }
+        });
         Menos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Menos1ActionPerformed(evt);
@@ -271,7 +363,7 @@ public class Principal extends javax.swing.JFrame {
             PanelVolumen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(PanelVolumen1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(Mas1)
+                .addComponent(Mas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(Menos1)
                 .addContainerGap())
@@ -282,13 +374,23 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(PanelVolumen1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(Menos1)
-                    .addComponent(Mas1))
+                    .addComponent(Mas1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         PanelVolumen2.setOpaque(false);
 
         Mas2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Volumen1.png"))); // NOI18N
+        Mas2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Mas2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Mas2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Mas2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Mas2MouseExited(evt);
+            }
+        });
         Mas2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Mas2ActionPerformed(evt);
@@ -296,6 +398,16 @@ public class Principal extends javax.swing.JFrame {
         });
 
         Menos2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Volumen2.png"))); // NOI18N
+        Menos2.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        Menos2.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Menos2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                Menos2MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                Menos2MouseExited(evt);
+            }
+        });
         Menos2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 Menos2ActionPerformed(evt);
@@ -328,7 +440,7 @@ public class Principal extends javax.swing.JFrame {
         TituloLayout.setHorizontalGroup(
             TituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(TituloLayout.createSequentialGroup()
-                .addContainerGap(292, Short.MAX_VALUE)
+                .addContainerGap(328, Short.MAX_VALUE)
                 .addGroup(TituloLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, TituloLayout.createSequentialGroup()
                         .addComponent(PanelVolumen1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -368,7 +480,7 @@ public class Principal extends javax.swing.JFrame {
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
+                .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -402,15 +514,104 @@ public class Principal extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(0, 0, 0));
 
+        Boda.setBackground(new java.awt.Color(144, 242, 232));
+        Boda.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Boda.setText("BODA");
+        Boda.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.cyan, java.awt.Color.cyan, java.awt.Color.cyan, java.awt.Color.cyan));
+        Boda.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Boda.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                BodaMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                BodaMouseExited(evt);
+            }
+        });
+        Boda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BodaActionPerformed(evt);
+            }
+        });
+
+        jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setText("Tipo de evento");
+
+        XV.setBackground(new java.awt.Color(144, 242, 232));
+        XV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        XV.setText("XV");
+        XV.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.cyan, java.awt.Color.cyan, java.awt.Color.cyan, java.awt.Color.cyan));
+        XV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        XV.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                XVMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                XVMouseExited(evt);
+            }
+        });
+
+        Otro.setBackground(new java.awt.Color(144, 242, 232));
+        Otro.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Otro.setText("OTRO");
+        Otro.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.cyan, java.awt.Color.cyan, java.awt.Color.cyan, java.awt.Color.cyan));
+        Otro.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Otro.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                OtroMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                OtroMouseExited(evt);
+            }
+        });
+
+        Cumpleaños.setBackground(new java.awt.Color(144, 242, 232));
+        Cumpleaños.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        Cumpleaños.setText("CUMPLEAÑOS");
+        Cumpleaños.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.cyan, java.awt.Color.cyan, java.awt.Color.cyan, java.awt.Color.cyan));
+        Cumpleaños.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        Cumpleaños.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                CumpleañosMouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                CumpleañosMouseExited(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(Boda, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(XV, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(Cumpleaños, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(Otro, javax.swing.GroupLayout.PREFERRED_SIZE, 240, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 172, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 40, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(XV, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Boda, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(Cumpleaños, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(Otro, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout PanelPrincipalLayout = new javax.swing.GroupLayout(PanelPrincipal);
@@ -487,28 +688,31 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_AdelanteMusica1MouseClicked
 
     private void AdelanteMusica1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdelanteMusica1ActionPerformed
+        if(cancion == 6){
+        
+        }else{
+            try {
+                cancion++;
+                clip.stop();
+                // Ruta del archivo de audio
+                File audioFile = new File("src\\MUSICA\\"+cancion+".wav");
 
-        try {
-            cancion++;
-            clip.stop();
-            // Ruta del archivo de audio
-            File audioFile = new File("src\\MUSICA\\"+cancion+".wav");
+                // Cargar el archivo de audio
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
 
-            // Cargar el archivo de audio
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+                // Obtener el clip de audio
+                clip = AudioSystem.getClip();
 
-            // Obtener el clip de audio
-            clip = AudioSystem.getClip();
+                // Abrir el clip de audio y reproducirlo
+                clip.open(audioStream);
 
-            // Abrir el clip de audio y reproducirlo
-            clip.open(audioStream);
-            
-            volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            
-            clip.start();
+                volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
 
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            e.printStackTrace();
+                clip.start();
+
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                e.printStackTrace();
+            }
         }
     }//GEN-LAST:event_AdelanteMusica1ActionPerformed
 
@@ -584,28 +788,31 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_AdelanteMusica2MouseClicked
 
     private void AdelanteMusica2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_AdelanteMusica2ActionPerformed
+        if(cancion == 6){
         
-        try {
-            cancion++;
-            clip.stop();
-            // Ruta del archivo de audio
-            File audioFile = new File("src\\MUSICA\\"+cancion+".wav");
+        }else{
+            try {
+                cancion++;
+                clip.stop();
+                // Ruta del archivo de audio
+                File audioFile = new File("src\\MUSICA\\"+cancion+".wav");
 
-            // Cargar el archivo de audio
-            AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
+                // Cargar el archivo de audio
+                AudioInputStream audioStream = AudioSystem.getAudioInputStream(audioFile);
 
-            // Obtener el clip de audio
-            clip = AudioSystem.getClip();
+                // Obtener el clip de audio
+                clip = AudioSystem.getClip();
 
-            // Abrir el clip de audio y reproducirlo
-            clip.open(audioStream);
-            
-            volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
-            
-            clip.start();
+                // Abrir el clip de audio y reproducirlo
+                clip.open(audioStream);
 
-        } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
-            e.printStackTrace();
+                volumeControl = (FloatControl) clip.getControl(FloatControl.Type.MASTER_GAIN);
+
+                clip.start();
+
+            } catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+                e.printStackTrace();
+            }
         }
     }//GEN-LAST:event_AdelanteMusica2ActionPerformed
 
@@ -624,6 +831,143 @@ public class Principal extends javax.swing.JFrame {
     private void Menos2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Menos2ActionPerformed
         changeVolumeMenos(5.0f);
     }//GEN-LAST:event_Menos2ActionPerformed
+
+    private void Mas1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mas1MouseEntered
+        Mas1.setBackground(Color.RED);
+    }//GEN-LAST:event_Mas1MouseEntered
+
+    private void Mas1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mas1MouseExited
+        Mas1.setBackground(Color.CYAN);
+    }//GEN-LAST:event_Mas1MouseExited
+
+    private void Mas2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mas2MouseEntered
+        Mas2.setBackground(Color.RED);
+    }//GEN-LAST:event_Mas2MouseEntered
+
+    private void Mas2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Mas2MouseExited
+        Mas2.setBackground(Color.CYAN);
+    }//GEN-LAST:event_Mas2MouseExited
+
+    private void Menos1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Menos1MouseEntered
+        Menos1.setBackground(Color.RED);
+    }//GEN-LAST:event_Menos1MouseEntered
+
+    private void Menos1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Menos1MouseExited
+        Menos1.setBackground(Color.CYAN);
+    }//GEN-LAST:event_Menos1MouseExited
+
+    private void Menos2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Menos2MouseEntered
+        Menos2.setBackground(Color.RED);
+    }//GEN-LAST:event_Menos2MouseEntered
+
+    private void Menos2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Menos2MouseExited
+        Menos2.setBackground(Color.CYAN);
+    }//GEN-LAST:event_Menos2MouseExited
+
+    private void AtrasMusica1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AtrasMusica1MouseEntered
+        AtrasMusica1.setBackground(Color.RED);
+    }//GEN-LAST:event_AtrasMusica1MouseEntered
+
+    private void AtrasMusica1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AtrasMusica1MouseExited
+        AtrasMusica1.setBackground(Color.CYAN);
+    }//GEN-LAST:event_AtrasMusica1MouseExited
+
+    private void AtrasMusica2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AtrasMusica2MouseEntered
+        AtrasMusica2.setBackground(Color.RED);
+    }//GEN-LAST:event_AtrasMusica2MouseEntered
+
+    private void AtrasMusica2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AtrasMusica2MouseExited
+        AtrasMusica2.setBackground(Color.CYAN);
+    }//GEN-LAST:event_AtrasMusica2MouseExited
+
+    private void AdelanteMusica1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdelanteMusica1MouseEntered
+        AdelanteMusica1.setBackground(Color.RED);
+    }//GEN-LAST:event_AdelanteMusica1MouseEntered
+
+    private void AdelanteMusica1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdelanteMusica1MouseExited
+        AdelanteMusica1.setBackground(Color.CYAN);
+    }//GEN-LAST:event_AdelanteMusica1MouseExited
+
+    private void AdelanteMusica2MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdelanteMusica2MouseEntered
+        AdelanteMusica2.setBackground(Color.RED);
+    }//GEN-LAST:event_AdelanteMusica2MouseEntered
+
+    private void AdelanteMusica2MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_AdelanteMusica2MouseExited
+        AdelanteMusica2.setBackground(Color.CYAN);
+    }//GEN-LAST:event_AdelanteMusica2MouseExited
+
+    private void DetenerMusicaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetenerMusicaMouseEntered
+        DetenerMusica.setBackground(Color.RED);
+    }//GEN-LAST:event_DetenerMusicaMouseEntered
+
+    private void DetenerMusicaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_DetenerMusicaMouseExited
+        DetenerMusica.setBackground(Color.CYAN);
+    }//GEN-LAST:event_DetenerMusicaMouseExited
+
+    private void IniciarMusicaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IniciarMusicaMouseEntered
+        IniciarMusica.setBackground(Color.RED);
+    }//GEN-LAST:event_IniciarMusicaMouseEntered
+
+    private void IniciarMusicaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_IniciarMusicaMouseExited
+        IniciarMusica.setBackground(Color.CYAN);
+    }//GEN-LAST:event_IniciarMusicaMouseExited
+
+    private void BodaMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BodaMouseEntered
+        Boda.setBackground(Color.red);
+        Boda.setForeground(Color.white);
+    }//GEN-LAST:event_BodaMouseEntered
+
+    private void BodaMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_BodaMouseExited
+        Boda.setBackground(Boton);
+        Boda.setForeground(Color.black);
+    }//GEN-LAST:event_BodaMouseExited
+
+    private void XVMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XVMouseEntered
+        XV.setBackground(Color.red);
+        XV.setForeground(Color.white);
+    }//GEN-LAST:event_XVMouseEntered
+
+    private void XVMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_XVMouseExited
+        XV.setBackground(Boton);
+        XV.setForeground(Color.black);
+    }//GEN-LAST:event_XVMouseExited
+
+    private void CumpleañosMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CumpleañosMouseEntered
+        Cumpleaños.setBackground(Color.red);
+        Cumpleaños.setForeground(Color.white);
+    }//GEN-LAST:event_CumpleañosMouseEntered
+
+    private void CumpleañosMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CumpleañosMouseExited
+        Cumpleaños.setBackground(Boton);
+        Cumpleaños.setForeground(Color.black);
+    }//GEN-LAST:event_CumpleañosMouseExited
+
+    private void OtroMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OtroMouseEntered
+        Otro.setBackground(Color.red);
+        Otro.setForeground(Color.white);
+    }//GEN-LAST:event_OtroMouseEntered
+
+    private void OtroMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_OtroMouseExited
+        Otro.setBackground(Boton);
+        Otro.setForeground(Color.black);
+    }//GEN-LAST:event_OtroMouseExited
+
+    private void BodaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BodaActionPerformed
+        p.setEvento("Boda");
+        this.dispose();
+        p.setVisible(true);
+        p.setLocationRelativeTo(this);
+        
+        
+        
+        try {
+            
+            clip.stop();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }//GEN-LAST:event_BodaActionPerformed
 
     /**
      * @param args the command line arguments
@@ -665,18 +1009,23 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton AdelanteMusica2;
     private javax.swing.JButton AtrasMusica1;
     private javax.swing.JButton AtrasMusica2;
+    private javax.swing.JButton Boda;
+    private javax.swing.JButton Cumpleaños;
     private javax.swing.JButton DetenerMusica;
     private javax.swing.JButton IniciarMusica;
     private javax.swing.JButton Mas1;
     private javax.swing.JButton Mas2;
     private javax.swing.JButton Menos1;
     private javax.swing.JButton Menos2;
+    private javax.swing.JButton Otro;
     private javax.swing.JPanel PanelMusica1;
     private javax.swing.JPanel PanelMusica2;
     private javax.swing.JPanel PanelPrincipal;
     private javax.swing.JPanel PanelVolumen1;
     private javax.swing.JPanel PanelVolumen2;
     private javax.swing.JPanel Titulo;
+    private javax.swing.JButton XV;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
