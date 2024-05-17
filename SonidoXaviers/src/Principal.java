@@ -79,6 +79,7 @@ public class Principal extends javax.swing.JFrame {
         
     }
     
+    
     public void changeVolumeMas(float change) {
         if (volumeControl != null) {
             float currentVolume = volumeControl.getValue();
@@ -148,7 +149,7 @@ public class Principal extends javax.swing.JFrame {
 
         PanelMusica1.setOpaque(false);
 
-        DetenerMusica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Musica1.png"))); // NOI18N
+        DetenerMusica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Musica2.png"))); // NOI18N
         DetenerMusica.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         DetenerMusica.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         DetenerMusica.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -234,7 +235,7 @@ public class Principal extends javax.swing.JFrame {
 
         PanelMusica2.setOpaque(false);
 
-        IniciarMusica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Musica2.png"))); // NOI18N
+        IniciarMusica.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IMAGENES/Musica1.png"))); // NOI18N
         IniciarMusica.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
         IniciarMusica.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         IniciarMusica.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -540,7 +541,7 @@ public class Principal extends javax.swing.JFrame {
 
         XV.setBackground(new java.awt.Color(144, 242, 232));
         XV.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        XV.setText("XV");
+        XV.setText("XV AÑOS");
         XV.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED, java.awt.Color.cyan, java.awt.Color.cyan, java.awt.Color.cyan, java.awt.Color.cyan));
         XV.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         XV.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -549,6 +550,11 @@ public class Principal extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 XVMouseExited(evt);
+            }
+        });
+        XV.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                XVActionPerformed(evt);
             }
         });
 
@@ -577,6 +583,11 @@ public class Principal extends javax.swing.JFrame {
             }
             public void mouseExited(java.awt.event.MouseEvent evt) {
                 CumpleañosMouseExited(evt);
+            }
+        });
+        Cumpleaños.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CumpleañosActionPerformed(evt);
             }
         });
 
@@ -958,7 +969,21 @@ public class Principal extends javax.swing.JFrame {
         p.setVisible(true);
         p.setLocationRelativeTo(this);
         
-        
+        try {
+            
+            clip.stop();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        p.setAudio();
+    }//GEN-LAST:event_BodaActionPerformed
+
+    private void XVActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_XVActionPerformed
+        p.setEvento("XV Años");
+        this.dispose();
+        p.setVisible(true);
+        p.setLocationRelativeTo(this);
         
         try {
             
@@ -967,7 +992,24 @@ public class Principal extends javax.swing.JFrame {
         } catch (Exception e) {
             e.printStackTrace();
         }
-    }//GEN-LAST:event_BodaActionPerformed
+        p.setAudio();
+    }//GEN-LAST:event_XVActionPerformed
+
+    private void CumpleañosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CumpleañosActionPerformed
+        p.setEvento("Cumpleaños");
+        this.dispose();
+        p.setVisible(true);
+        p.setLocationRelativeTo(this);
+        
+        try {
+            
+            clip.stop();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        p.setAudio();
+    }//GEN-LAST:event_CumpleañosActionPerformed
 
     /**
      * @param args the command line arguments
